@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import colors from "../constants/colors";
+import FontSworeGames from "./fontText/FontSworeGames";
 
 const Header = (props) => {
   return (
     <View style={styles.headerRoot}>
-      <Text style={styles.headerText}>{props.titel}</Text>
+      <FontSworeGames style={styles.headerText}>{props.titel}</FontSworeGames>
     </View>
   );
 };
@@ -20,8 +21,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: colors.text,
-    fontWeight: "bold",
-    fontSize: 20,
+    fontSize: 25,
   },
 });
 

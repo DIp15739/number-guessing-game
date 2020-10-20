@@ -1,6 +1,8 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
 import { Button, StyleSheet, Text, View } from "react-native";
+import FontSworeGames from "../components/fontText/FontSworeGames";
+import FontBirdyGame from "../components/fontText/FontBirdyGame";
 import colors from "../constants/colors";
 import Card from "../components/Card";
 import Output from "../components/Output";
@@ -8,14 +10,16 @@ import Output from "../components/Output";
 const EndScreen = (props) => {
   return (
     <View style={styles.root}>
-      <Text style={styles.text}>The Game is Over...</Text>
+      <FontBirdyGame style={styles.text}>The Game is Over...</FontBirdyGame>
       <View style={styles.cardGroup}>
         <Card style={styles.output}>
-          <Text style={styles.outputText}>Number of rounds</Text>
+          <FontSworeGames style={styles.outputText}>
+            Number of rounds
+          </FontSworeGames>
           <Output style={styles.outputNumber}>{props.roundsNumber}</Output>
         </Card>
         <Card style={styles.output}>
-          <Text style={styles.outputText}>Number was</Text>
+          <FontSworeGames style={styles.outputText}>Number was</FontSworeGames>
           <Output style={styles.outputNumber}>{props.yourNumber}</Output>
         </Card>
       </View>
@@ -37,9 +41,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   text: {
-    fontSize: 30,
-    fontWeight: "bold",
-    fontStyle: "italic",
+    fontSize: 35,
     color: colors.text,
     marginBottom: 20,
   },
@@ -56,14 +58,13 @@ const styles = StyleSheet.create({
   },
   outputNumber: {
     marginVertical: 20,
+    //fontFamily: "Didone-RoomNumbers",
   },
   outputText: {
     color: colors.text,
     fontSize: 15,
     textAlign: "center",
     marginVertical: 5,
-    fontStyle: "italic",
-    fontWeight: "bold",
   },
   card: {
     width: "90%",

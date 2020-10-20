@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     marginVertical: 20,
     borderBottomColor: colors.text,
     borderBottomWidth: 1,
-    fontWeight: "bold",
+    fontFamily: "Didone-RoomNumbers",
     borderStyle: "dotted",
     color: colors.text,
     fontSize: 30,

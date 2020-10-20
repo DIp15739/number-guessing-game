@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
 import { View, Text, StyleSheet, Button, Alert } from "react-native";
+import FontSworeGames from "../components/fontText/FontSworeGames";
+import FontBirdyGame from "../components/fontText/FontBirdyGame";
 import Output from "../components/Output";
 import Card from "../components/Card";
 import colors from "../constants/colors";
@@ -53,11 +55,14 @@ const MainScreen = (props) => {
   return (
     <View style={styles.screenRoot}>
       <Card style={styles.card}>
-        <Text style={styles.cardTitel}> Opponent's Guess</Text>
+        <FontBirdyGame style={styles.cardTitel}>
+          {" "}
+          Opponent's Guess
+        </FontBirdyGame>
         <Output>{guess}</Output>
-        <Text style={styles.cardSubTitel}>
+        <FontSworeGames style={styles.cardSubTitel}>
           It's lower or higher then Entered number
-        </Text>
+        </FontSworeGames>
         <View style={styles.buttonGroup}>
           <View style={styles.buttonView}>
             <Button
@@ -97,19 +102,15 @@ const styles = StyleSheet.create({
   },
   card: {
     alignItems: "center",
-    width: "80%",
+    width: "83%",
     marginVertical: "60%",
   },
   cardTitel: {
-    fontStyle: "italic",
-    fontSize: 15,
-    fontWeight: "bold",
+    fontSize: 25,
     color: colors.text,
   },
   cardSubTitel: {
-    fontStyle: "italic",
-    fontSize: 14,
-    fontWeight: "bold",
+    fontSize: 16,
     color: colors.text,
     marginVertical: 5,
   },

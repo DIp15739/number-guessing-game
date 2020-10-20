@@ -1,11 +1,12 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import colors from "../constants/colors";
+import FontDrNumber from "./fontText/FontDrNumber";
 
 const Output = (props) => {
   return (
     <View style={styles.output}>
-      <Text style={styles.text}>{props.children}</Text>
+      <FontDrNumber style={styles.text}>{props.children}</FontDrNumber>
     </View>
   );
 };
@@ -22,8 +23,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: colors.numberText,
-    fontSize: 22,
-    fontWeight: "bold",
+    fontSize: 35,
   },
 });
 export default Output;

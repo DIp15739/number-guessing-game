@@ -8,6 +8,8 @@ import {
   Keyboard,
   Alert,
 } from "react-native";
+import FontSworeGames from "../components/fontText/FontSworeGames";
+import FontBirdyGame from "../components/fontText/FontBirdyGame";
 import { StyleSheet } from "react-native";
 import Card from "../components/Card";
 import Colors from "../constants/colors";
@@ -47,7 +49,9 @@ const StatingScreen = (props) => {
   if (confirm) {
     output = (
       <Card style={styles.output}>
-        <Text style={styles.outputText}>selected number</Text>
+        <FontSworeGames style={styles.outputText}>
+          selected number
+        </FontSworeGames>
         <Output style={styles.outputNumber}>{finalNumber}</Output>
         <Button
           title="START GAME"
@@ -64,9 +68,13 @@ const StatingScreen = (props) => {
         Keyboard.dismiss();
       }}>
       <View style={styles.screenRoot}>
-        <Text style={styles.screenTitel}>Start a new Game</Text>
+        <FontBirdyGame style={styles.screenTitel}>
+          Start a new Game
+        </FontBirdyGame>
         <Card style={styles.card}>
-          <Text style={styles.cardTitel}>Enter a Number</Text>
+          <FontSworeGames style={styles.cardTitel}>
+            Enter a Number
+          </FontSworeGames>
           <Input
             style={styles.input}
             keyboardType="number-pad"
@@ -107,11 +115,10 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   screenTitel: {
-    fontSize: 20,
-    fontWeight: "bold",
-    marginVertical: 7,
+    fontSize: 26,
+    marginTop: 30,
+    marginBottom: 10,
     color: colors.text,
-    fontStyle: "italic",
   },
   card: {
     width: "90%",
@@ -119,9 +126,7 @@ const styles = StyleSheet.create({
     marginVertical: 15,
   },
   cardTitel: {
-    fontStyle: "italic",
-    fontSize: 15,
-    fontWeight: "bold",
+    fontSize: 18,
     color: colors.text,
   },
   input: {
@@ -147,8 +152,6 @@ const styles = StyleSheet.create({
   outputText: {
     color: colors.text,
     fontSize: 19,
-    fontWeight: "bold",
-    textAlign: "center",
     marginVertical: 5,
   },
 });

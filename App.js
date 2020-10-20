@@ -5,10 +5,31 @@ import StatingScreen from "./screen/StatingScreen";
 import MainScreen from "./screen/MainScreen";
 import EndScreen from "./screen/EndScreen";
 import colors from "./constants/colors";
+import { AppLoading } from "expo";
+import * as Font from "expo-font";
+
+const customFonts = () => {
+  return Font.loadAsync({
+    "Didone-RoomNumbers": require("./assets/fonts/DidoneRoomNumbers-Decorative.otf"),
+    "Birdy-Game": require("./assets/fonts/Birdy-Game.ttf"),
+    "Swore-Games": require("./assets/fonts/Swore-Games.ttf"),
+  });
+};
 
 export default function App() {
+  const [fontsLoaded, setFontsLoaded] = useState(false);
   const [enteredNumber, setEnteredNumber] = useState();
   const [rounds, setRounds] = useState(0);
+
+  if (!fontsLoaded) {
+    return (
+      <AppLoading
+        startAsync={customFonts}
+        onFinish={() => setFontsLoaded(true)}
+        onError={(err) => console.log(err)}
+      />
+    );
+  }
 
   const newGameHandler = () => {
     setRounds(0);

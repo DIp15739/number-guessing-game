@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Basic-Game",
-    "slug": "Basic-Game",
+    "name": "NUMBER-GUESSING-GAME",
+    "slug": "NUMBER-GUESSING-GAME",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
