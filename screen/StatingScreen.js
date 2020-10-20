@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import {
-  Text,
-  View,
-  Button,
-  TouchableWithoutFeedback,
-  Keyboard,
-  Alert,
-} from "react-native";
+import { View, TouchableWithoutFeedback, Keyboard, Alert } from "react-native";
 import FontSworeGames from "../components/fontText/FontSworeGames";
 import FontBirdyGame from "../components/fontText/FontBirdyGame";
 import { StyleSheet } from "react-native";
 import Card from "../components/Card";
-import Colors from "../constants/colors";
 import Input from "../components/Input";
 import Output from "../components/Output";
 import colors from "../constants/colors";
+import CustomButton from "../components/CustomButton";
 
 const StatingScreen = (props) => {
   const [inputValue, setInputValue] = useState("");
@@ -53,11 +46,11 @@ const StatingScreen = (props) => {
           selected number
         </FontSworeGames>
         <Output style={styles.outputNumber}>{finalNumber}</Output>
-        <Button
-          title="START GAME"
-          color={colors.higherButton}
-          onPress={() => props.onStart(finalNumber)}
-        />
+        <CustomButton
+          style={styles.startButton}
+          onPress={() => props.onStart(finalNumber)}>
+          start game
+        </CustomButton>
       </Card>
     );
   }
@@ -86,18 +79,16 @@ const StatingScreen = (props) => {
           />
           <View style={styles.buttonGroup}>
             <View style={styles.buttonView}>
-              <Button
-                title="CONFIRM"
-                onPress={confirmHendler}
-                color={Colors.success}
-              />
+              <CustomButton
+                style={styles.confirmButton}
+                onPress={confirmHendler}>
+                confirm
+              </CustomButton>
             </View>
             <View style={styles.buttonView}>
-              <Button
-                title="RESET"
-                onPress={resetHandler}
-                color={Colors.danger}
-              />
+              <CustomButton style={styles.resetButton} onPress={resetHandler}>
+                reset
+              </CustomButton>
             </View>
           </View>
         </Card>
@@ -140,19 +131,41 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   buttonView: {
-    width: "30%",
+    width: "34%",
+    elevation: 30,
+  },
+  confirmButton: {
+    backgroundColor: colors.success,
+    paddingVertical: 5,
+    paddingHorizontal: 6,
+    color: colors.text,
+    fontSize: 15,
+  },
+  resetButton: {
+    backgroundColor: colors.danger,
+    paddingVertical: 5,
+    paddingHorizontal: 6,
+    color: colors.text,
+    fontSize: 15,
   },
   output: {
     marginTop: 20,
     alignItems: "center",
   },
   outputNumber: {
-    marginVertical: 20,
+    marginVertical: 22,
   },
   outputText: {
     color: colors.text,
     fontSize: 19,
     marginVertical: 5,
+  },
+  startButton: {
+    backgroundColor: colors.higherButton,
+    paddingVertical: 5,
+    paddingHorizontal: 10,
+    color: colors.text,
+    fontSize: 16,
   },
 });
 export default StatingScreen;

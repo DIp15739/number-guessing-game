@@ -1,16 +1,22 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { Button, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, View } from "react-native";
 import FontSworeGames from "../components/fontText/FontSworeGames";
-import FontBirdyGame from "../components/fontText/FontBirdyGame";
 import colors from "../constants/colors";
 import Card from "../components/Card";
 import Output from "../components/Output";
+import CustomButton from "../components/CustomButton";
 
 const EndScreen = (props) => {
   return (
     <View style={styles.root}>
-      <FontBirdyGame style={styles.text}>The Game is Over...</FontBirdyGame>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../assets/img/game-over.png")}
+          resizeMode="cover"
+          style={styles.image}
+        />
+      </View>
       <View style={styles.cardGroup}>
         <Card style={styles.output}>
           <FontSworeGames style={styles.outputText}>
@@ -23,12 +29,10 @@ const EndScreen = (props) => {
           <Output style={styles.outputNumber}>{props.yourNumber}</Output>
         </Card>
       </View>
-      <View style={styles.button}>
-        <Button
-          title="NEW GAME"
-          onPress={props.onNewGame}
-          color={colors.higherButton}
-        />
+      <View style={styles.buttonView}>
+        <CustomButton onPress={props.onNewGame} style={styles.button}>
+          new game
+        </CustomButton>
       </View>
       <StatusBar style="light" />
     </View>
@@ -37,7 +41,6 @@ const EndScreen = (props) => {
 const styles = StyleSheet.create({
   root: {
     flex: 1,
-    justifyContent: "center",
     alignItems: "center",
   },
   text: {
@@ -58,7 +61,6 @@ const styles = StyleSheet.create({
   },
   outputNumber: {
     marginVertical: 20,
-    //fontFamily: "Didone-RoomNumbers",
   },
   outputText: {
     color: colors.text,
@@ -71,9 +73,31 @@ const styles = StyleSheet.create({
     alignItems: "center",
     marginVertical: 15,
   },
-  button: {
-    width: "40%",
+  buttonView: {
+    width: "59%",
     marginTop: 15,
+    elevation: 15,
+  },
+  button: {
+    backgroundColor: colors.higherButton,
+    paddingVertical: 7,
+    paddingHorizontal: 20,
+    color: colors.text,
+    fontSize: 23,
+  },
+  imageContainer: {
+    width: "80%",
+    height: 200,
+    marginTop: 70,
+    marginBottom: 20,
+    elevation: 15,
+    backgroundColor: colors.primary,
+    borderRadius: 20,
+    overflow: "hidden",
+  },
+  image: {
+    width: "100%",
+    height: "100%",
   },
 });
 

@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { View, Text, StyleSheet, Button, Alert } from "react-native";
+import { View, StyleSheet, Alert } from "react-native";
 import FontSworeGames from "../components/fontText/FontSworeGames";
 import FontBirdyGame from "../components/fontText/FontBirdyGame";
 import Output from "../components/Output";
 import Card from "../components/Card";
 import colors from "../constants/colors";
+import CustomButton from "../components/CustomButton";
 
 const randomNumber = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -65,18 +66,18 @@ const MainScreen = (props) => {
         </FontSworeGames>
         <View style={styles.buttonGroup}>
           <View style={styles.buttonView}>
-            <Button
-              title="LOWER"
-              color={colors.lowerButton}
-              onPress={trueGuessHandler.bind(this, "lower")}
-            />
+            <CustomButton
+              style={styles.lowerButton}
+              onPress={trueGuessHandler.bind(this, "lower")}>
+              lower
+            </CustomButton>
           </View>
           <View style={styles.buttonView}>
-            <Button
-              title="Higher"
-              color={colors.higherButton}
-              onPress={trueGuessHandler.bind(this, "higher")}
-            />
+            <CustomButton
+              style={styles.higherButton}
+              onPress={trueGuessHandler.bind(this, "higher")}>
+              higher
+            </CustomButton>
           </View>
         </View>
       </Card>
@@ -94,11 +95,26 @@ const styles = StyleSheet.create({
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingHorizontal: 33,
+    paddingHorizontal: 20,
     marginVertical: 10,
   },
   buttonView: {
-    width: "30%",
+    width: "35%",
+    elevation: 10,
+  },
+  lowerButton: {
+    backgroundColor: colors.lowerButton,
+    paddingVertical: 5,
+    paddingHorizontal: 6,
+    color: colors.text,
+    fontSize: 15,
+  },
+  higherButton: {
+    backgroundColor: colors.higherButton,
+    paddingVertical: 5,
+    paddingHorizontal: 6,
+    color: colors.text,
+    fontSize: 15,
   },
   card: {
     alignItems: "center",
