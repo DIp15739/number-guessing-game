@@ -7,4 +7,5 @@ export default {
   lowerButton: "#00959c",
   higherButton: "#c14b0b",
   numberText: "#32a93b",
+  wihite: "#ffffff",
 };

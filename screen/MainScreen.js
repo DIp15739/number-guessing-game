@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
 import { StatusBar } from "expo-status-bar";
-import { View, StyleSheet, Alert } from "react-native";
+import { View, StyleSheet, Alert, ScrollView, Text } from "react-native";
 import FontSworeGames from "../components/fontText/FontSworeGames";
 import FontBirdyGame from "../components/fontText/FontBirdyGame";
+import FontDrNumber from "../components/fontText/FontDrNumber";
 import Output from "../components/Output";
 import Card from "../components/Card";
 import colors from "../constants/colors";
@@ -20,9 +21,19 @@ const randomNumber = (min, max, exclude) => {
   }
 };
 
+const roundListItem = (value, numOfRound) => (
+  <Card key={value} style={styles.listItem}>
+    <FontSworeGames style={styles.listItemText}>
+      Round number {"  " + "#" + numOfRound}
+    </FontSworeGames>
+    <FontDrNumber style={styles.listItemNumber}>{value}</FontDrNumber>
+  </Card>
+);
+
 const MainScreen = (props) => {
-  const [guess, setguess] = useState(randomNumber(1, 100, props.userInput));
-  const [round, setRound] = useState(0);
+  const initialGuess = randomNumber(1, 100, props.userInput);
+  const [guess, setguess] = useState(initialGuess);
+  const [roundList, setRoundList] = useState([initialGuess]);
   const low = useRef(1);
   const high = useRef(100);
 
@@ -30,7 +41,7 @@ const MainScreen = (props) => {
 
   useEffect(() => {
     if (guess === userInput) {
-      onGameOver(round);
+      onGameOver(roundList.length);
     }
   }, [guess, userInput, onGameOver]);
 
@@ -47,11 +58,11 @@ const MainScreen = (props) => {
     if (direction === "lower") {
       high.current = guess;
     } else {
-      low.current = guess;
+      low.current = guess + 1;
     }
     const newNumber = randomNumber(low.current, high.current, guess);
     setguess(newNumber);
-    setRound((curRound) => curRound + 1);
+    setRoundList((curRound) => [newNumber, ...curRound]);
   };
 
   return (
@@ -81,6 +92,13 @@ const MainScreen = (props) => {
           </View>
         </View>
       </Card>
+      <View style={styles.scrollViewContainer}>
+        <ScrollView contentContainerStyle={styles.scrollView}>
+          {roundList.map((round, index) =>
+            roundListItem(round, roundList.length - index)
+          )}
+        </ScrollView>
+      </View>
       <StatusBar style="light" />
     </View>
   );
@@ -119,7 +137,7 @@ const styles = StyleSheet.create({
   card: {
     alignItems: "center",
     width: "83%",
-    marginVertical: "60%",
+    marginTop: 40,
   },
   cardTitel: {
     fontSize: 25,
@@ -129,6 +147,30 @@ const styles = StyleSheet.create({
     fontSize: 17,
     color: colors.text,
     marginVertical: 10,
+  },
+  scrollViewContainer: {
+    width: "70%",
+    marginTop: 30,
+    flex: 1,
+  },
+  scrollView: {
+    flexGrow: 1,
+    justifyContent: "flex-end",
+  },
+  listItem: {
+    marginVertical: 9,
+    flexDirection: "row",
+    elevation: 3,
+    padding: 15,
+    justifyContent: "space-between",
+  },
+  listItemText: {
+    color: colors.text,
+    fontSize: 17,
+  },
+  listItemNumber: {
+    color: colors.text,
+    fontSize: 22,
   },
 });
 export default MainScreen;
