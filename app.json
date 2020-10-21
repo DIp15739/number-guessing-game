@@ -1,26 +1,26 @@
 {
   "expo": {
-    "name": "NUMBER-GUESSING-GAME",
-    "slug": "NUMBER-GUESSING-GAME",
+    "name": "Number Guessing Game",
+    "slug": "Number-Guessing-Game",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/img/logo.png",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/img/logo.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#141414"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "assets/**/*"
     ],
     "ios": {
       "supportsTablet": true
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/img/logo.png"
     }
   }
 }
