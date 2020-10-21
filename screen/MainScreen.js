@@ -7,6 +7,7 @@ import Output from "../components/Output";
 import Card from "../components/Card";
 import colors from "../constants/colors";
 import CustomButton from "../components/CustomButton";
+import { Fontisto } from "@expo/vector-icons";
 
 const randomNumber = (min, max, exclude) => {
   min = Math.ceil(min);
@@ -56,26 +57,25 @@ const MainScreen = (props) => {
   return (
     <View style={styles.screenRoot}>
       <Card style={styles.card}>
-        <FontBirdyGame style={styles.cardTitel}>
-          {" "}
-          Opponent's Guess
-        </FontBirdyGame>
+        <FontBirdyGame style={styles.cardTitel}>Opponent's Guess</FontBirdyGame>
         <Output>{guess}</Output>
         <FontSworeGames style={styles.cardSubTitel}>
-          It's lower or higher then Entered number
+          Entered number is HIGHER or LOWER
         </FontSworeGames>
         <View style={styles.buttonGroup}>
           <View style={styles.buttonView}>
             <CustomButton
               style={styles.lowerButton}
-              onPress={trueGuessHandler.bind(this, "lower")}>
+              onPress={trueGuessHandler.bind(this, "lower")}
+              icon={<Fontisto name="dislike" size={13} color={colors.text} />}>
               lower
             </CustomButton>
           </View>
           <View style={styles.buttonView}>
             <CustomButton
               style={styles.higherButton}
-              onPress={trueGuessHandler.bind(this, "higher")}>
+              onPress={trueGuessHandler.bind(this, "higher")}
+              icon={<Fontisto name="like" size={13} color={colors.text} />}>
               higher
             </CustomButton>
           </View>
@@ -126,9 +126,9 @@ const styles = StyleSheet.create({
     color: colors.text,
   },
   cardSubTitel: {
-    fontSize: 16,
+    fontSize: 17,
     color: colors.text,
-    marginVertical: 5,
+    marginVertical: 10,
   },
 });
 export default MainScreen;

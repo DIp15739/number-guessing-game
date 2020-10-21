@@ -9,6 +9,9 @@ import Input from "../components/Input";
 import Output from "../components/Output";
 import colors from "../constants/colors";
 import CustomButton from "../components/CustomButton";
+import { MaterialIcons } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 
 const StatingScreen = (props) => {
   const [inputValue, setInputValue] = useState("");
@@ -48,7 +51,14 @@ const StatingScreen = (props) => {
         <Output style={styles.outputNumber}>{finalNumber}</Output>
         <CustomButton
           style={styles.startButton}
-          onPress={() => props.onStart(finalNumber)}>
+          onPress={() => props.onStart(finalNumber)}
+          icon={
+            <Ionicons
+              name="logo-game-controller-b"
+              size={20}
+              color={colors.text}
+            />
+          }>
           start game
         </CustomButton>
       </Card>
@@ -81,12 +91,29 @@ const StatingScreen = (props) => {
             <View style={styles.buttonView}>
               <CustomButton
                 style={styles.confirmButton}
-                onPress={confirmHendler}>
-                confirm
+                onPress={confirmHendler}
+                icon={
+                  <MaterialIcons
+                    name="cloud-done"
+                    size={20}
+                    color={colors.text}
+                    style={styles.icon}
+                  />
+                }>
+                Confirm
               </CustomButton>
             </View>
             <View style={styles.buttonView}>
-              <CustomButton style={styles.resetButton} onPress={resetHandler}>
+              <CustomButton
+                style={styles.resetButton}
+                onPress={resetHandler}
+                icon={
+                  <MaterialCommunityIcons
+                    name="reload"
+                    size={20}
+                    color={colors.text}
+                  />
+                }>
                 reset
               </CustomButton>
             </View>
@@ -131,13 +158,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   buttonView: {
-    width: "34%",
+    width: "40%",
     elevation: 30,
   },
   confirmButton: {
     backgroundColor: colors.success,
     paddingVertical: 5,
-    paddingHorizontal: 6,
+    paddingHorizontal: 3,
     color: colors.text,
     fontSize: 15,
   },
@@ -166,6 +193,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     color: colors.text,
     fontSize: 16,
+  },
+  icon: {
+    paddingLeft: 5,
   },
 });
 export default StatingScreen;

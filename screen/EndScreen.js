@@ -6,6 +6,7 @@ import colors from "../constants/colors";
 import Card from "../components/Card";
 import Output from "../components/Output";
 import CustomButton from "../components/CustomButton";
+import { Foundation } from "@expo/vector-icons";
 
 const EndScreen = (props) => {
   return (
@@ -30,7 +31,10 @@ const EndScreen = (props) => {
         </Card>
       </View>
       <View style={styles.buttonView}>
-        <CustomButton onPress={props.onNewGame} style={styles.button}>
+        <CustomButton
+          onPress={props.onNewGame}
+          style={styles.button}
+          icon={<Foundation name="burst-new" size={38} color={colors.text} />}>
           new game
         </CustomButton>
       </View>

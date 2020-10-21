@@ -1,6 +1,5 @@
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import colors from "../constants/colors";
 import FontSworeGames from "./fontText/FontSworeGames";
 
 const CustomButton = (props) => {
@@ -10,6 +9,7 @@ const CustomButton = (props) => {
         <FontSworeGames style={{ ...styles.buttonText, ...props.style }}>
           {props.children}
         </FontSworeGames>
+        {props.icon}
       </View>
     </TouchableOpacity>
   );
@@ -17,11 +17,15 @@ const CustomButton = (props) => {
 
 const styles = StyleSheet.create({
   button: {
+    flexDirection: "row",
     borderRadius: 12,
+    justifyContent: "center",
+    alignItems: "center",
   },
   buttonText: {
     textTransform: "uppercase",
     textAlign: "center",
+    alignItems: "center",
   },
 });
 
