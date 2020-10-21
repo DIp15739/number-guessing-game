@@ -21,6 +21,9 @@
     },
     "web": {
       "favicon": "./assets/img/logo.png"
+    },
+    "android": {
+      "package": "com.demoApp.numberGuessingGame"
     }
   }
 }
