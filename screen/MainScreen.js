@@ -99,7 +99,7 @@ const styles = StyleSheet.create({
     marginVertical: 10,
   },
   buttonView: {
-    width: "35%",
+    width: "40%",
     elevation: 10,
   },
   lowerButton: {

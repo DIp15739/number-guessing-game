@@ -57,6 +57,7 @@ const StatingScreen = (props) => {
               name="logo-game-controller-b"
               size={20}
               color={colors.text}
+              style={{ paddingRight: 4 }}
             />
           }>
           start game
