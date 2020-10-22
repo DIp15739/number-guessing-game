@@ -1,21 +1,39 @@
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  TouchableNativeFeedback,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import FontSworeGames from "./fontText/FontSworeGames";
 
 const CustomButton = (props) => {
+  let ButtonClickStyle = TouchableOpacity;
+
+  if (Platform.OS === "android" && Platform.Version > 21) {
+    ButtonClickStyle = TouchableNativeFeedback;
+  }
+
   return (
-    <TouchableOpacity activeOpacity={0.6} onPress={props.onPress}>
-      <View style={{ ...styles.button, ...props.style }}>
-        <FontSworeGames style={{ ...styles.buttonText, ...props.style }}>
-          {props.children}
-        </FontSworeGames>
-        {props.icon}
-      </View>
-    </TouchableOpacity>
+    <View style={styles.buttonContainer}>
+      <ButtonClickStyle activeOpacity={0.6} onPress={props.onPress}>
+        <View style={{ ...styles.button, ...props.style }}>
+          <FontSworeGames style={{ ...styles.buttonText, ...props.style }}>
+            {props.children}
+          </FontSworeGames>
+          {props.icon}
+        </View>
+      </ButtonClickStyle>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
+  buttonContainer: {
+    borderRadius: 12,
+    overflow: "hidden",
+  },
   button: {
     flexDirection: "row",
     borderRadius: 12,
